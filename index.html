@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <title>Iraboti Transparent Lottery Software</title>
+	<meta name='description' content='Choose winners with confidence using this open-source, tamper-proof lottery software'>
+	
+	<!-- Iraboti Transparent Lottery Software -->
+	<!-- developed by Tawhidur Rahman Dear, https://www.tawhidurrahmandear.com -->
+	<!-- Source Code available at https://github.com/tawhidurrahmandear/iraboti -->
+	<!-- Live Preview available at https://tawhidurrahmandear.github.io/iraboti -->
+
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <meta http-equiv='cache-control' content='no-cache, no-store, must-revalidate'>
+    
+	<style>
+        .iraboti-content {
+            font-family: Tahoma, Helvetica, 'Trebuchet MS', sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .iraboti-content h1, .iraboti-content h2, .iraboti-content h3 {
+            font-family: Tahoma, Ubuntu, Roboto, Helvetica, 'Trebuchet MS', sans-serif;
+            color: #6600FF;
+            text-align: center;
+        }
+		
+        .iraboti-tab-buttons {
+            display: flex;
+            justify-content: space-between;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .iraboti-tab-buttons button {
+            flex: 1;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #6600FF;
+            border-radius: 5px; 
+            background-color: white;
+            color: #6600FF;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .iraboti-tab-buttons button:hover {
+            background-color: #6600FF;
+            color: white;
+        }
+
+        .iraboti-tab-buttons button.active {
+            background-color: #6600FF;
+            color: white;
+            border: none;
+        }
+
+        /* Style for tab content */
+        .iraboti-tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .iraboti-tab-content.active {
+            display: block;
+        }
+
+        /* Label and input styling */
+        .iraboti-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .iraboti-input, .iraboti-textarea {
+            width: 100%;
+            padding: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #EEF3FA;
+            transition: background-color 0.5s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+		
+        .iraboti-input, .iraboti-textarea {
+            font-size: 16px;
+        }
+
+        .iraboti-textarea {
+            font-family: Tahoma, Helvetica, 'Trebuchet MS', sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: bold;
+            resize: none;
+        }
+
+        /* Button styling */
+        .iraboti-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #6600FF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .iraboti-button:hover {
+            background-color: #751aff;
+        }
+
+        /* Alert message styling */
+        .alert {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 14px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .alert.error {
+            color: white;
+            background-color: red;
+        }
+
+        .alert.success {
+            color: white;
+            background-color: green;
+        }
+
+        /* Results section styling */
+        #results {
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #6600FF;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="iraboti-content">
+    <h2>Iraboti</h2>
+    <h3>Transparent Lottery Software</h3>
+    <div class="iraboti-tab-buttons">
+        <button class="iraboti-tab-link active" data-tab="rangeInput">Range Input</button>
+        <button class="iraboti-tab-link" data-tab="customInput">Custom Input</button>
+    </div>
+
+    <!-- Range Input Tab -->
+    <div class="iraboti-tab-content active" id="rangeInput">
+        <label class="iraboti-label" for="start">Start Range :<br>(Only numerics from 1 or higher are allowed)</label>
+        <input type="number" class="iraboti-input" id="start" placeholder="Enter start range">
+        <br>
+        <br>
+        <label class="iraboti-label" for="end">End Range :<br>(Must be a greater number than Start Range)</label>
+        <input type="number" class="iraboti-input" id="end" placeholder="Enter end range">
+        <br>
+		<br>
+        <label class="iraboti-label" for="winnersRange">Number of Winners:</label>
+        <input type="number" class="iraboti-input" id="winnersRange" placeholder="Enter number of winners">
+        <br>
+        <button class="iraboti-button" id="drawRangeLottery">Draw Lottery</button>
+        <div id="rangeAlert" class="alert"></div>
+    </div>
+
+    <!-- Custom Input Tab -->
+    <div class="iraboti-tab-content" id="customInput">
+        <label class="iraboti-label" for="customNumbers">Paste Lottery Numbers<br>(One per line, alphanumeric and random are allowed)</label>
+        <textarea id="customNumbers" class="iraboti-textarea" spellcheck="false" rows="10" placeholder="Enter Lottery Numbers, or Names of the Players"></textarea>
+        <br>
+		<br>
+        <label class="iraboti-label" for="winnersCustom">Number of Winners:</label>
+        <input type="number" class="iraboti-input" id="winnersCustom" placeholder="Enter number of winners">
+        
+        <button class="iraboti-button" id="drawCustomLottery">Draw Lottery</button>
+        <div id="customAlert" class="alert"></div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="results"></div>
+    </div>
+
+    <script>
+
+
+// Iraboti Transparent Lottery Software 
+// developed by Tawhidur Rahman Dear, https://www.tawhidurrahmandear.com 
+// Source Code available at https://github.com/tawhidurrahmandear/iraboti
+// Live Preview available at https://tawhidurrahmandear.github.io/iraboti 
+
+
+// Tab Switching Logic
+document.querySelectorAll('.iraboti-tab-link').forEach(function (button) {
+    button.addEventListener('click', function () {
+        // Remove the 'active' class from all tab buttons
+        document.querySelectorAll('.iraboti-tab-link').forEach(function (btn) {
+            btn.classList.remove('active');
+        });
+        // Hide all tab content
+        document.querySelectorAll('.iraboti-tab-content').forEach(function (tab) {
+            tab.classList.remove('active');
+        });
+
+        // Add 'active' class to the clicked tab button
+        button.classList.add('active');
+        // Show the corresponding tab content based on the data-tab attribute
+        document.getElementById(button.getAttribute('data-tab')).classList.add('active');
+    });
+});
+
+// Lottery Drawing for Range Input
+document.getElementById('drawRangeLottery').addEventListener('click', function () {
+    const start = parseInt(document.getElementById('start').value, 10); // Start of range
+    const end = parseInt(document.getElementById('end').value, 10); // End of range
+    const winnersCount = parseInt(document.getElementById('winnersRange').value, 10); // Number of winners
+    const alertDiv = document.getElementById('rangeAlert'); // Alert area for range input
+
+    alertDiv.className = 'alert'; // Reset alert classes
+    alertDiv.textContent = ''; // Clear previous alerts
+
+    if (isNaN(start) || isNaN(end) || isNaN(winnersCount) || start > end || winnersCount > end - start + 1) {
+        alertDiv.textContent = 'Invalid input. Check your ranges.';
+        alertDiv.classList.add('error'); // Show error message with red styling
+        return;
+    }
+
+    const range = [];
+    for (let i = start; i <= end; i++) {
+        range.push(i);
+    }
+
+    const winners = [];
+    while (winners.length < winnersCount) {
+        const randomIndex = Math.floor(Math.random() * range.length); // Random index from range array
+        winners.push(range.splice(randomIndex, 1)[0]); // Remove the selected number and add it to winners
+    }
+
+    displayResults(winners);
+
+    alertDiv.textContent = 'Lottery draw successful!';
+    alertDiv.classList.add('success'); // Success message in green
+});
+
+// Lottery Drawing for Custom Input
+document.getElementById('drawCustomLottery').addEventListener('click', function () {
+    const customNumbersInput = document.getElementById('customNumbers').value.trim(); // User input (one number per line)
+    const winnersCount = parseInt(document.getElementById('winnersCustom').value, 10); // Number of winners
+    const alertDiv = document.getElementById('customAlert'); // Alert area for custom input
+
+    alertDiv.className = 'alert'; // Reset alert classes
+    alertDiv.textContent = ''; // Clear previous alerts
+
+    const numbers = customNumbersInput.split('\n').map(function (num) {
+        return num.trim();
+    }).filter(Boolean);
+
+    if (numbers.length === 0 || isNaN(winnersCount) || winnersCount > numbers.length) {
+        alertDiv.textContent = 'Invalid input. Check your custom numbers or winner count.';
+        alertDiv.classList.add('error'); // Show error message in red
+        return;
+    }
+
+    const winners = [];
+    const pool = numbers.slice(); // Clone the array to avoid modifying the original input
+    while (winners.length < winnersCount) {
+        const randomIndex = Math.floor(Math.random() * pool.length); // Random index from the pool array
+        winners.push(pool.splice(randomIndex, 1)[0]); // Remove the selected number and add it to winners
+    }
+
+    displayResults(winners);
+
+    alertDiv.textContent = 'Lottery draw successful!';
+    alertDiv.classList.add('success'); // Success message with green styling
+});
+
+// Function to display the results in a table
+function displayResults(winners) {
+    var resultsHTML = '<h2>Winners:</h2>' +
+        '<table>' +
+        '<thead>' +
+        '<tr>' +
+        '<th>#</th>' + // Column for serial numbers
+        '<th>Winner</th>' + // Column for winner details
+        '</tr>' +
+        '</thead>' +
+        '<tbody>';
+
+    // Append rows for each winner
+    winners.forEach(function (winner, index) {
+        resultsHTML += '<tr>' +
+            '<td>' + (index + 1) + '</td>' + // Serial number
+            '<td>' + winner + '</td>' + // Winner value
+            '</tr>';
+    });
+
+    resultsHTML += '</tbody></table>';
+
+    // Insert the generated table into the results section
+    document.getElementById('results').innerHTML = resultsHTML;
+}
+</script>
+
+
+</body>
+</html>
