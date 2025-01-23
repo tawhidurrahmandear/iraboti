@@ -1,4 +1,5 @@
-# [Iraboti Transparent Lottery Software](https://tawhidurrahmandear.github.io/iraboti) <br>
+# [Iraboti 🌐 Transparent Lottery Software](https://tawhidurrahmandear.github.io/iraboti) <br>
+v1.0  <br>
 Choose winners with confidence using this open-source, tamper-proof lottery software
 
 <br><br>
