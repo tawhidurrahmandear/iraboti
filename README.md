@@ -16,6 +16,8 @@ It is precisely at these moments that the lottery is needed in public. We often 
 
 To ensure the credibility of the lottery, an open-source automated lottery software is required, so that anyone can view the Source Code and verify that no manipulation has taken place. This entire software is created using HTML, CSS, and JavaScript and is made available on GitHub, allowing anyone to download it from the internet and read its code on any regular computer. Enough comments have been written in the JavaScript section for better understanding.
 
+Enjoy ... Iraboti is named after the [Iraboti Dolphin (ইরাবতী ডলফিন)](https://en.wikipedia.org/wiki/Irrawaddy_dolphin). Only a few people win lotteries, and in the same way, only a few people can become friends with Iraboti Dolphins. Please note that the spelling has been intentionally changed. 
+
 <br><br>
 
 ## Made with HTML + JavaScript + CSS <br>
